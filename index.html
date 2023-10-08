@@ -112,7 +112,7 @@
             <span class="author-block"><sup>2</sup>KRAFTON Inc.</span>
           </div>
           <div class="column has-text-centered">
-            <span class="author-block">arXiv preprint</span>
+            <span class="author-block"><i>arXiv preprint</i></span>
           </div>
           <div class="column has-text-centered">
             <div class="publication-links">
@@ -127,7 +127,7 @@
                 </a>
               </span>
               <span class="link-block">
-                <a href="https://neuface-dataset.github.io"
+                <a href="https://arxiv.org/abs/2310.03205"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
                       <i class="ai ai-arxiv"></i>
@@ -201,9 +201,8 @@
 <!--    <div class="container">-->
 <!--      <div id="results-carousel" class="carousel results-carousel">-->
 <!--        <div class="item item-steve">-->
-<!--          <video poster="" id="steve" autoplay controls muted loop height="100%">-->
-<!--            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/steve.mp4"-->
-<!--                    type="video/mp4">-->
+<!--          <video id="issues" controls autoplay width="100%" height="100%" loop poster="" controlsList="nodownload">-->
+<!--            <source src="./video/issues_.mp4" type="video/mp4" />-->
 <!--          </video>-->
 <!--        </div>-->
 <!--        <div class="item item-chair-tp">-->
@@ -268,6 +267,45 @@
           By exploiting the naturalness and diversity of 3D faces in our dataset,
           we demonstrate the usefulness of our dataset for 3D face-related tasks: improving the reconstruction accuracy of an existing 3D face reconstruction model and learning 3D facial motion prior.
         </div>
+
+        <h2 class="title is-3"> NeuFace optimization</h2>
+        <img src="video/system.jpg" width="1920" height="681">
+        <div class="content has-text-justified">
+          NeuFace optimization re-parameterizes 3D face meshes into over-parameterized neural parameters.
+          <a href="https://arxiv.org/abs/1811.03962">Allen-Zhu <i>et al</i>., (2019)</a> have shown that an optimization with neural over-parameterization may obtain a global optimal solution with a high probability.
+          NeuFace optimization is performed in an <i>Expectation-Maximization</i> fashion, supervised by 2D landmark loss, multi-view bootstrapping loss and temporal consistency loss.
+        </div>
+
+        <h2 class="title is-3"> 3DMM fitting vs. NeuFace optimization</h2>
+<!--        <video src="video/3dmm_vs_ours_.mp4" width="1920" height="1080"> </video>-->
+        <video id="baseline" controls autoplay width="100%" height="100%" loop poster="" controlsList="nodownload">
+        <source src="./video/3dmm_vs_ours_.mp4" type="video/mp4" />
+        </video>
+        <div class="content has-text-justified">
+          Thanks to the neural re-parameterization of the 3D face meshes, NeuFace optimization obtains 3D faces with
+          more image-aligned facial details by avoiding mean shape bias (<a href="https://arxiv.org/abs/2004.03686">Joo <i>et al</i>., 2020</a>).
+        </div>
+
+        <h2 class="title is-3"> DECA vs. NeuFace optimization</h2>
+<!--        <video src="video/deca_vs_ours_.mp4" width="1920" height="1080"> </video>-->
+        <video id="deca" controls autoplay width="100%" height="100%" loop poster="" controlsList="nodownload">
+        <source src="./video/deca_vs_ours_.mp4" type="video/mp4" />
+        </video>
+        <div class="content has-text-justified">
+          Compared to a conventional 3D face mesh reconstruction method, <a href="https://github.com/yfeng95/DECA">DECA (Feng <i>et al.</i>, 2021)</a>, NeuFace optimization obtains multi-view consistent and
+          more stabilized facial motion, which shows the reliable quality of NeuFace-dataset's 3DMM annotation for large-scale videos.
+        </div>
+
+        <h2 class="title is-3"> Application: Generative 3D facial motion prior</h2>
+<!--        <video src="video/deca_vs_ours_.mp4" width="1920" height="1080"> </video>-->
+        <video id="motion_prior" controls autoplay width="100%" height="100%" loop poster="" controlsList="nodownload">
+        <source src="./video/face_prior.mp4" type="video/mp4" />
+        </video>
+        <div class="content has-text-justified">
+          As a practical and interesting application of NeuFace-dataset, we train a generative 3D facial motion prior.
+          (<a style="color: #ED7D31">Top row</a>) While the existing facial motion capture dataset <strong><a style="color: #ED7D31">VOCASET</a></strong> is limited in learning a complex dynamic manifold of human faces,
+          (<a style="color: #4472C4">Bottom row</a>) we show the large-scale, naturalness and diversity of <strong><a style="color: #4472C4">NeuFace-dataset</a></strong> is a key to learn such high-quality facial motion prior (bottom row).
+        </div>
       </div>
     </div>
     <!--/ Abstract. -->
@@ -278,149 +316,13 @@
 </section>
 
 
-<!--<section class="section">-->
-<!--  <div class="container is-max-desktop">-->
-
-<!--    <div class="columns is-centered">-->
-
-<!--      &lt;!&ndash; Visual Effects. &ndash;&gt;-->
-<!--      <div class="column">-->
-<!--        <div class="content">-->
-<!--          <h2 class="title is-3">Visual Effects</h2>-->
-<!--          <p>-->
-<!--            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect-->
-<!--            would be impossible without nerfies since it would require going through a wall.-->
-<!--          </p>-->
-<!--          <video id="dollyzoom" autoplay controls muted loop height="100%">-->
-<!--            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/dollyzoom-stacked.mp4"-->
-<!--                    type="video/mp4">-->
-<!--          </video>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--      &lt;!&ndash;/ Visual Effects. &ndash;&gt;-->
-
-<!--      &lt;!&ndash; Matting. &ndash;&gt;-->
-<!--      <div class="column">-->
-<!--        <h2 class="title is-3">Matting</h2>-->
-<!--        <div class="columns is-centered">-->
-<!--          <div class="column content">-->
-<!--            <p>-->
-<!--              As a byproduct of our method, we can also solve the matting problem by ignoring-->
-<!--              samples that fall outside of a bounding box during rendering.-->
-<!--            </p>-->
-<!--            <video id="matting-video" controls height="100%">-->
-<!--              <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/matting.mp4"-->
-<!--                      type="video/mp4">-->
-<!--            </video>-->
-<!--          </div>-->
-
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash;/ Matting. &ndash;&gt;-->
-
-<!--    &lt;!&ndash; Animation. &ndash;&gt;-->
-<!--    <div class="columns is-centered">-->
-<!--      <div class="column is-full-width">-->
-<!--        <h2 class="title is-3">Animation</h2>-->
-
-<!--        &lt;!&ndash; Interpolating. &ndash;&gt;-->
-<!--        <h3 class="title is-4">Interpolating states</h3>-->
-<!--        <div class="content has-text-justified">-->
-<!--          <p>-->
-<!--            We can also animate the scene by interpolating the deformation latent codes of two input-->
-<!--            frames. Use the slider here to linearly interpolate between the left frame and the right-->
-<!--            frame.-->
-<!--          </p>-->
-<!--        </div>-->
-<!--        <div class="columns is-vcentered interpolation-panel">-->
-<!--          <div class="column is-3 has-text-centered">-->
-<!--            <img src="https://homes.cs.washington.edu/~kpar/nerfies/images/interpolate_start.jpg"-->
-<!--                 class="interpolation-image"-->
-<!--                 alt="Interpolate start reference image."/>-->
-<!--            <p>Start Frame</p>-->
-<!--          </div>-->
-<!--          <div class="column interpolation-video-column">-->
-<!--            <div id="interpolation-image-wrapper">-->
-<!--              Loading...-->
-<!--            </div>-->
-<!--            <input class="slider is-fullwidth is-large is-info"-->
-<!--                   id="interpolation-slider"-->
-<!--                   step="1" min="0" max="100" value="0" type="range">-->
-<!--          </div>-->
-<!--          <div class="column is-3 has-text-centered">-->
-<!--            <img src="https://homes.cs.washington.edu/~kpar/nerfies/images/interpolate_end.jpg"-->
-<!--                 class="interpolation-image"-->
-<!--                 alt="Interpolation end reference image."/>-->
-<!--            <p class="is-bold">End Frame</p>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        <br/>-->
-<!--        &lt;!&ndash;/ Interpolating. &ndash;&gt;-->
-
-<!--        &lt;!&ndash; Re-rendering. &ndash;&gt;-->
-<!--        <h3 class="title is-4">Re-rendering the input video</h3>-->
-<!--        <div class="content has-text-justified">-->
-<!--          <p>-->
-<!--            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel-->
-<!--            viewpoint such as a stabilized camera by playing back the training deformations.-->
-<!--          </p>-->
-<!--        </div>-->
-<!--        <div class="content has-text-centered">-->
-<!--          <video id="replay-video"-->
-<!--                 controls-->
-<!--                 muted-->
-<!--                 preload-->
-<!--                 width="75%">-->
-<!--            <source src="https://homes.cs.washington.edu/~kpar/nerfies/videos/replay.mp4"-->
-<!--                    type="video/mp4">-->
-<!--          </video>-->
-<!--        </div>-->
-<!--        &lt;!&ndash;/ Re-rendering. &ndash;&gt;-->
-
-<!--      </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash;/ Animation. &ndash;&gt;-->
-
-
-<!--    &lt;!&ndash; Concurrent Work. &ndash;&gt;-->
-<!--    <div class="columns is-centered">-->
-<!--      <div class="column is-full-width">-->
-<!--        <h2 class="title is-3">Related Links</h2>-->
-
-<!--        <div class="content has-text-justified">-->
-<!--          <p>-->
-<!--            There's a lot of excellent work that was introduced around the same time as ours.-->
-<!--          </p>-->
-<!--          <p>-->
-<!--            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.-->
-<!--          </p>-->
-<!--          <p>-->
-<!--            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>-->
-<!--            both use deformation fields to model non-rigid scenes.-->
-<!--          </p>-->
-<!--          <p>-->
-<!--            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>-->
-<!--          </p>-->
-<!--          <p>-->
-<!--            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.-->
-<!--          </p>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </div>-->
-<!--    &lt;!&ndash;/ Concurrent Work. &ndash;&gt;-->
-
-<!--  </div>-->
-<!--</section>-->
-
-
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{Youwang2023NeuFace,
   author    = {Kim Youwang and Lee Hyun and Kim Sung-Bin and Suekyeong Nam and Janghoon Ju and Tae-Hyun Oh},
   title     = {A Large-Scale 3D Face Mesh Video Dataset via Neural Re-parameterized Optimization},
-  journal   = {arxiv preprint},
+  journal   = {<i>arXiv preprint, arXiv:2310.03205</i>},
   year      = {2023},
 }</code></pre>
   </div>
@@ -443,10 +345,9 @@
         <div class="content">
           <h2 class="title is-3">Acknowledgement</h2>
           <p>
-<!--            This work was supported by Institute of Information & communications Technology Planning & Evaluation (IITP) grant funded by the Korea government(MSIT)-->
-<!--            (No.2022-0-00290,Visual Intelligence for Space-Time Understanding and Generation based on Multi-layered Visual Common Sense;-->
-<!--            No.2021-0-02068, Artificial Intelligence Innovation Hub;-->
-<!--            No.2022-0-00124, Development of Artificial Intelligence Technology for Self-Improving Competency-Aware Learning Capabilities).-->
+            This work was supported by Institute of Information & communications Technology Planning & Evaluation (IITP) grant funded by the Korea government(MSIT)
+            (No.RS-2023-00225630, Development of Artificial Intelligence for Text-based 3D Movie Generation;
+            and No.2022-0-00290, Visual Intelligence for Space-Time Understanding and Generation based on Multi-layered Visual Common Sense).
           </p>
           <p>
             This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
